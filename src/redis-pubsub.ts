@@ -170,7 +170,7 @@ export class RedisPubSub implements PubSubEngine {
   private currentSubscriptionId: number;
 
   private onMessage(pattern: string, channel: string, message: string) {
-    const subscribers = this.subsRefsMap.get(pattern || channel);
+    const subscribers = this.subsRefsMap.get(pattern?.toString() || channel?.toString());
 
     // Don't work for nothing..
     if (!subscribers?.size) return;
